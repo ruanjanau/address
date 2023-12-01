@@ -16,8 +16,7 @@ class AddressRepository implements IAddressRepository {
       String address) async {
     try {
       var result = await service.getAddress(address);
-      var addressEntities = result.map((e) => e.toEntity()).toList();
-      return Right(addressEntities);
+      return Right(result.map((e) => e.toEntity()).toList());
     } catch (e) {
       return Left(AddressError.unexpected());
     }
