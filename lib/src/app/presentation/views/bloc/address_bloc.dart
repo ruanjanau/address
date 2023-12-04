@@ -25,7 +25,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     emit(const AddressState.loading());
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final result = await _addressService.getAddress("address");
+      final result = await _addressService.getAddress(event.cep);
       emit(AddressState.loaded(result.cast<AddressEntity>()));
     } catch (e) {
       emit(const AddressState.error(message: "Error fetching addresses"));

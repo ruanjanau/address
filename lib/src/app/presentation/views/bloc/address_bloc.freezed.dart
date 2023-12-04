@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddressEvent {
+  String get cep => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() searchAddress,
+    required TResult Function(String cep) searchAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? searchAddress,
+    TResult? Function(String cep)? searchAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? searchAddress,
+    TResult Function(String cep)? searchAddress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$AddressEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AddressEventCopyWith<AddressEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $AddressEventCopyWith<$Res> {
   factory $AddressEventCopyWith(
           AddressEvent value, $Res Function(AddressEvent) then) =
       _$AddressEventCopyWithImpl<$Res, AddressEvent>;
+  @useResult
+  $Res call({String cep});
 }
 
 /// @nodoc
@@ -66,14 +73,31 @@ class _$AddressEventCopyWithImpl<$Res, $Val extends AddressEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cep = null,
+  }) {
+    return _then(_value.copyWith(
+      cep: null == cep
+          ? _value.cep
+          : cep // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AddressEventSearchAddressImplCopyWith<$Res> {
+abstract class _$$AddressEventSearchAddressImplCopyWith<$Res>
+    implements $AddressEventCopyWith<$Res> {
   factory _$$AddressEventSearchAddressImplCopyWith(
           _$AddressEventSearchAddressImpl value,
           $Res Function(_$AddressEventSearchAddressImpl) then) =
       __$$AddressEventSearchAddressImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String cep});
 }
 
 /// @nodoc
@@ -84,52 +108,76 @@ class __$$AddressEventSearchAddressImplCopyWithImpl<$Res>
       _$AddressEventSearchAddressImpl _value,
       $Res Function(_$AddressEventSearchAddressImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cep = null,
+  }) {
+    return _then(_$AddressEventSearchAddressImpl(
+      null == cep
+          ? _value.cep
+          : cep // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddressEventSearchAddressImpl implements _AddressEventSearchAddress {
-  const _$AddressEventSearchAddressImpl();
+  const _$AddressEventSearchAddressImpl(this.cep);
+
+  @override
+  final String cep;
 
   @override
   String toString() {
-    return 'AddressEvent.searchAddress()';
+    return 'AddressEvent.searchAddress(cep: $cep)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddressEventSearchAddressImpl);
+            other is _$AddressEventSearchAddressImpl &&
+            (identical(other.cep, cep) || other.cep == cep));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, cep);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddressEventSearchAddressImplCopyWith<_$AddressEventSearchAddressImpl>
+      get copyWith => __$$AddressEventSearchAddressImplCopyWithImpl<
+          _$AddressEventSearchAddressImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() searchAddress,
+    required TResult Function(String cep) searchAddress,
   }) {
-    return searchAddress();
+    return searchAddress(cep);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? searchAddress,
+    TResult? Function(String cep)? searchAddress,
   }) {
-    return searchAddress?.call();
+    return searchAddress?.call(cep);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? searchAddress,
+    TResult Function(String cep)? searchAddress,
     required TResult orElse(),
   }) {
     if (searchAddress != null) {
-      return searchAddress();
+      return searchAddress(cep);
     }
     return orElse();
   }
@@ -164,7 +212,15 @@ class _$AddressEventSearchAddressImpl implements _AddressEventSearchAddress {
 }
 
 abstract class _AddressEventSearchAddress implements AddressEvent {
-  const factory _AddressEventSearchAddress() = _$AddressEventSearchAddressImpl;
+  const factory _AddressEventSearchAddress(final String cep) =
+      _$AddressEventSearchAddressImpl;
+
+  @override
+  String get cep;
+  @override
+  @JsonKey(ignore: true)
+  _$$AddressEventSearchAddressImplCopyWith<_$AddressEventSearchAddressImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
