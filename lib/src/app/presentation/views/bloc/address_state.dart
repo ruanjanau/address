@@ -1,13 +1,27 @@
 part of 'address_bloc.dart';
 
-@freezed
-class AddressState with _$AddressState {
-  const factory AddressState.initial() = _AddressStateInitial;
-  const factory AddressState.loading() = _AddressStateLoading;
-  const factory AddressState.success() = _AddressStateSuccess;
-  const factory AddressState.error({required String message}) =
-      _AddressStateError;
-  //call my list when you find the address search
-  const factory AddressState.loaded(List<AddressEntity> addresses) =
-      _AddressStateLoaded;
+class AddressState {
+  const AddressState();
+}
+
+class AddressStateInitial extends AddressState {}
+
+class AddressStateLoading extends AddressState {}
+
+class AddressStateSuccess extends AddressState {
+  final List<AddressEntity> addresses;
+
+  AddressStateSuccess(this.addresses);
+}
+
+class AddressStateError extends AddressState {
+  final String message;
+
+  AddressStateError(this.message);
+}
+
+class AddressStateDetails extends AddressState {
+  final AddressModel address;
+
+  AddressStateDetails(this.address);
 }

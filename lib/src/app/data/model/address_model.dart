@@ -1,4 +1,4 @@
-import 'package:address/src/app/domain/entities/entity.dart';
+import '../../domain/entities/entity.dart';
 
 class AddressModel {
   final String? cep;
@@ -25,7 +25,7 @@ class AddressModel {
     this.siafi,
   });
 
-  factory AddressModel.fromJson(dynamic map) {
+  factory AddressModel.fromJson(Map<String, dynamic> map) {
     return AddressModel(
       cep: map['cep'] ?? '',
       logradouro: map['logradouro'] ?? '',

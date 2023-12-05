@@ -15,8 +15,24 @@ class AddressService implements IAddressService {
 
   @override
   FutureOr<List<AddressModel>> getAddress(String address) async {
-    final response = await dio.get('https://viacep.com.br/ws/$address/json/');
+    try {
+      final response = await dio.get('https://viacep.com.br/ws/$address/json/');
 
-    return (response.data as List).map(AddressModel.fromJson).toList();
+      if (response.statusCode == 200) {
+        final dynamic data = response.data;
+
+        if (data is List) {
+          return data.map((map) => AddressModel.fromJson(map)).toList();
+        } else if (data is Map<String, dynamic>) {
+          return [AddressModel.fromJson(data)];
+        } else {
+          throw Exception('Unexpected response format');
+        }
+      } else {
+        throw Exception('Failed to load address: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Error fetching addresses: $e');
+    }
   }
 }
