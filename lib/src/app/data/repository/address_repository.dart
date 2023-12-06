@@ -8,14 +8,14 @@ import 'package:dartz/dartz.dart';
 import '../../domain/repository/repository.dart';
 
 class AddressRepository implements IAddressRepository {
-  final IAddressService service;
+  final IAddressDataSource dataSource;
 
-  AddressRepository(this.service);
+  AddressRepository(this.dataSource);
   @override
   Future<Either<AddressError, List<AddressEntity>>> getAll(
       String address) async {
     try {
-      var result = await service.getAddress(address);
+      var result = await dataSource.getAddress(address);
       return Right(result.map((e) => e.toEntity()).toList());
     } catch (e) {
       return Left(AddressError.unexpected());

@@ -11,15 +11,15 @@ part 'address_event.dart';
 part 'address_state.dart';
 
 class AddressBloc extends Bloc<AddressEvent, AddressState> {
-  final AddressService _addressService;
+  final AddressDataSource _addressDataSource;
 
-  AddressBloc({required AddressService service})
-      : _addressService = service,
+  AddressBloc({required AddressDataSource dataSource})
+      : _addressDataSource = dataSource,
         super(AddressStateInitial()) {
     on<AddressEventSearchAddress>((event, emit) async {
       emit(AddressStateLoading());
       try {
-        final result = await _addressService.getAddress(event.cep);
+        final result = await _addressDataSource.getAddress(event.cep);
         if (result.isNotEmpty) {
           emit(AddressStateDetails(result.first));
         } else {
@@ -36,7 +36,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     if (event is AddressEventSearchAddress) {
       AddressStateLoading();
       try {
-        final result = await _addressService.getAddress(event.cep);
+        final result = await _addressDataSource.getAddress(event.cep);
         if (result.isNotEmpty) {
           return AddressStateDetails(result.first);
         } else {

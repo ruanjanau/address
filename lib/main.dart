@@ -16,7 +16,7 @@ void main() {
       routes: {
         '/presentation': (context) => BlocProvider(
               create: (context) => AddressBloc(
-                service: AddressService(dio),
+                dataSource: AddressDataSource(dio),
               ),
               child: AddressPage(
                 address: AddressModel(),
