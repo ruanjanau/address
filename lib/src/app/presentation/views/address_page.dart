@@ -1,3 +1,5 @@
+import '../components/components.dart';
+
 import '../../data/model/address_model.dart';
 import 'bloc/address_bloc.dart';
 
@@ -31,26 +33,14 @@ class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Endereço',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.blueAccent,
-      ),
+      appBar: const CustomAppBar(title: 'Endereço'),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextFormField(
+            CustomTextFormField(
+              text: 'Digite o Cep',
               controller: _searchAddress,
-              decoration: const InputDecoration(label: Text('Digite o Cep')),
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(

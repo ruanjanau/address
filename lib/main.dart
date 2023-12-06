@@ -1,4 +1,4 @@
-import 'src/app/data/service/service.dart';
+import 'src/app/data/data_source/service.dart';
 import 'src/app/presentation/views/bloc/address_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

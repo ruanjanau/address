@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../data/model/model.dart';
-import '../../../data/service/service.dart';
+import '../../../data/data_source/service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

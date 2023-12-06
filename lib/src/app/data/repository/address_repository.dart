@@ -1,4 +1,4 @@
-import '../service/service.dart';
+import '../data_source/service.dart';
 import '../../domain/entities/address_entity.dart';
 
 import '../../domain/error/address_error.dart';
