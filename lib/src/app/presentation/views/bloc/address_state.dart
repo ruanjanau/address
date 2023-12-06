@@ -8,12 +8,6 @@ class AddressStateInitial extends AddressState {}
 
 class AddressStateLoading extends AddressState {}
 
-class AddressStateSuccess extends AddressState {
-  final List<AddressEntity> addresses;
-
-  AddressStateSuccess(this.addresses);
-}
-
 class AddressStateError extends AddressState {
   final String message;
 

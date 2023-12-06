@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import '../../../data/model/model.dart';
-import '../../../data/data_source/service.dart';
+import '../../../data/datasources/service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../domain/entities/entity.dart';
 
 part 'address_event.dart';
 part 'address_state.dart';
@@ -22,8 +20,6 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         final result = await _addressDataSource.getAddress(event.cep);
         if (result.isNotEmpty) {
           emit(AddressStateDetails(result.first));
-        } else {
-          emit(AddressStateError("Address not found"));
         }
       } catch (e) {
         emit(AddressStateError("Error fetching addresses"));
